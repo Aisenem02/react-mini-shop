@@ -19,10 +19,10 @@ function App() {
           </button>
         ))}
       </div>
-      <div className="basket">
+      <div className="basket" basket={basket}>
         <div className="total">
           <span>Итого:</span>
-          <span>0 c</span>
+          <span>{getTotalPrice(basket)} c</span>
         </div>
         <div>
         {basket.map((item) => (
@@ -36,6 +36,11 @@ function App() {
     </div>
   );
 }
-
+const getTotalPrice=(arr)=>{
+  let total=0
+  for(let i=0; i<arr.length;i++){
+    total+=arr[i].price
+  }return total
+}
 const root = document.getElementById("root");
 ReactDOM.render(<App />, root);
