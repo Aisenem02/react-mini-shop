@@ -2,7 +2,9 @@
 
 function App() {
   const [basket,setBasket]=React.useState([])
-  
+  function addToBasket(p) {
+    setBasket([...basket, p]);
+  } 
   return (
     <div className="App">
       <div className="product-list" addToBasket={addToBasket}>
@@ -23,10 +25,12 @@ function App() {
           <span>0 c</span>
         </div>
         <div>
-          <button className="product" >
-            <div>Название</div>
-            <div>Цена c</div>
-          </button>
+        {basket.map((item) => (
+            <button className="product">
+              <div>{item.title}</div>
+              <div>Цена:{item.price} сом</div>
+            </button>
+          ))}
         </div>
       </div>
     </div>
